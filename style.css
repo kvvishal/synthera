@@ -1,0 +1,278 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0b0b0f, #141420);
+  color: white;
+  line-height: 1.6;
+}
+
+/* CONTAINER */
+.container {
+  width: 85%;
+  margin: auto;
+  max-width: 1100px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #b0b0c3;
+  margin-bottom: 30px;
+}
+
+button {
+  padding: 14px 28px;
+  border: none;
+  background: #6c63ff;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #574bdb;
+  transform: scale(1.05);
+}
+
+/* PROBLEM SECTION */
+.problem {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.problem h2 {
+  margin-bottom: 40px;
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+/* FEATURES */
+.features {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.card {
+  padding: 30px;
+  width: 180px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  background: rgba(255,255,255,0.1);
+}
+
+/* STEPS */
+.steps {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.step-box {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.step {
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* AUTH PAGE */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-box {
+  width: 320px;
+  padding: 30px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 20px;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.auth-box span {
+  color: #6c63ff;
+  cursor: pointer;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.logo {
+  color: #ff6b4a;
+}
+
+.logout {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+/* MAIN CARD */
+.main-card {
+  width: 500px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+}
+
+.main-card h2 {
+  margin-bottom: 20px;
+}
+
+.main-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 20px;
+  border-radius: 10px;
+  border: none;
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+
+/* INFO BOX */
+.info-box {
+  background: rgba(255,255,255,0.08);
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* BOTTOM BAR */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.next-btn {
+  background: #ff8c73;
+  padding: 14px 40px;
+  border-radius: 12px;
+  border: none;
+}
+
+.back-btn {
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+}
+
+/* PROGRESS BAR */
+.progress-container {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #ddd;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ff8c73;
+  border-radius: 10px;
+}
+
+/* OPTIONS */
+.options {
+  margin-top: 20px;
+}
+
+.option {
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.option:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.option.selected {
+  background: #ff8c73;
+  color: white;
+}

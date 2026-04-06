@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assessment</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+  <h2 class="logo">Florya</h2>
+  <button class="logout">Log out</button>
+</div>
+
+<!-- MAIN CARD -->
+<div class="main-card">
+
+  <h2>👤 Personal Information</h2>
+
+  <!-- AGE -->
+  <label>Age (Years)</label>
+  <input type="number" placeholder="e.g. 28" id="age">
+
+  <!-- HEIGHT -->
+  <div class="row">
+    <div>
+      <label>Height (cm)</label>
+      <input type="number" placeholder="e.g. 165" id="height">
+    </div>
+
+    <div>
+      <label>Weight (kg)</label>
+      <input type="number" placeholder="e.g. 62" id="weight">
+    </div>
+  </div>
+
+  <!-- INFO BOX -->
+  <div class="info-box">
+    Height and Weight are used to calculate BMI, which acts as a risk modifier.
+  </div>
+
+</div>
+
+<!-- BUTTONS -->
+<div class="bottom-bar">
+  <button class="back-btn">← Back</button>
+  <button class="next-btn" id="nextBtn">Next Step →</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
