@@ -276,3 +276,105 @@ button:hover {
   background: #ff8c73;
   color: white;
 }
+
+.question-block {
+  margin-top: 20px;
+}
+
+button {
+  margin: 10px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  background: #ff8c73;
+  color: white;
+  cursor: pointer;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ff8c73;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+#riskPercent {
+  font-size: 60px;
+  color: #ff8c73;
+}
+
+/* BACKGROUND */
+body {
+  background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* CONTAINER */
+.result-container {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+/* CIRCLE */
+.circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  background: conic-gradient(#ff8c73 0%, #333 0%);
+  position: relative;
+}
+
+/* INNER CIRCLE */
+.circle::before {
+  content: "";
+  width: 140px;
+  height: 140px;
+  background: #0f0f1a;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circle span {
+  position: relative;
+  z-index: 2;
+}
+
+/* TEXT */
+#riskText {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* INSIGHT BOX */
+.insight-box {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.insight-box p {
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+/* BUTTON */
+.finish-btn {
+  margin-top: 30px;
+  padding: 12px 30px;
+  border-radius: 12px;
+  border: none;
+  background: #ff8c73;
+  color: white;
+  cursor: pointer;
+}

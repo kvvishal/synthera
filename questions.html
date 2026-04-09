@@ -16,33 +16,37 @@
 
 <!-- PROGRESS -->
 <div class="progress-container">
-  <p>STEP 1 OF 7</p>
-  <p>0% Complete</p>
+  <p id="stepText">STEP 1</p>
+  <p id="percentText">0% Complete</p>
+
   <div class="progress-bar">
-    <div class="progress-fill" style="width: 10%"></div>
+    <div class="progress-fill" id="progressFill"></div>
   </div>
 </div>
 
 <!-- QUESTION CARD -->
-<div class="main-card">
-
+<div id="symptomStep">
   <h2>Previous Diagnoses</h2>
-  <p>Have you ever been diagnosed with any of the following conditions?</p>
 
   <div class="options">
     <div class="option">PCOS</div>
     <div class="option">Endometriosis</div>
-    <div class="option">Uterine Fibroids</div>
     <div class="option">Thyroid disorder</div>
-    <div class="option">Primary Ovarian Insufficiency</div>
+    <div class="option">None</div>
   </div>
 
+  <button id="nextQ">Next</button>
 </div>
 
-<!-- BUTTONS -->
-<div class="bottom-bar">
-  <button class="back-btn">← Back</button>
-  <button class="next-btn" id="nextQ">Next Step →</button>
+
+<!-- STEP 2: QUESTIONS -->
+<div id="questionStep" style="display:none;">
+  <div id="dynamicQuestions"></div>
+
+  <div class="bottom-bar">
+    <button id="backBtn">← Back</button>
+    <button id="nextBtnQ">Next →</button>
+  </div>
 </div>
 
 <script src="script.js"></script>
