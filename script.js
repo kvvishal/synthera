@@ -383,20 +383,37 @@ function calculateRisk() {
 }
 
 
-function showResult() {
+// ===============================
+// SHOW RESULT (AI CONNECTED)
+// ===============================
+async function showResult() {
 
-    let percent = calculateRisk();
+    const answers = JSON.parse(localStorage.getItem("answers")) || [];
 
-    const riskText = document.getElementById("riskText");
+    const res = await fetch("http://127.0.0.1:5000/analyze", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ answers })
+    });
+
+    const data = await res.json();
+
+    const output = document.getElementById("insights");
     const riskPercent = document.getElementById("riskPercent");
-    const insights = document.getElementById("insights");
     const circle = document.querySelector(".circle");
 
-    if (!riskPercent) return;
+    let text = data.result;
 
+    // 🔥 EXTRACT PERCENT FROM TEXT
+    let match = text.match(/(\d+)%/);
+
+    let percent = match ? parseInt(match[1]) : 50; // default fallback
+
+    // 🔥 ANIMATE CIRCLE
     let current = 0;
 
-    // 🔥 ANIMATION
     let interval = setInterval(() => {
         if (current >= percent) {
             clearInterval(interval);
@@ -409,25 +426,19 @@ function showResult() {
         }
     }, 15);
 
-    // TEXT
-    if (percent > 70) {
-        riskText.innerText = "High Risk ⚠️";
-    } else if (percent > 40) {
-        riskText.innerText = "Moderate Risk";
-    } else {
-        riskText.innerText = "Low Risk ✅";
-    }
+    // 🔥 DISPLAY RESULT TEXT
+    output.innerHTML = `
+        <h3>${data.source === "AI" ? "AI Analysis 🤖" : "Smart Analysis ⚡"}</h3>
+        <pre style="white-space:pre-line;">${text}</pre>
+    `;
+}
 
-    // INSIGHTS
-    let answers = JSON.parse(localStorage.getItem("answers")) || [];
 
-    insights.innerHTML = "<h3>Key Observations:</h3>";
-
-    answers.forEach(a => {
-        if (a.answer === "Yes") {
-            insights.innerHTML += `<p>• ${a.question} (${a.duration})</p>`;
-        }
-    });
+// ===============================
+// AUTO RUN ON RESULT PAGE
+// ===============================
+if (window.location.pathname.includes("result.html")) {
+    showResult();
 }
 
 if (window.location.pathname.includes("result.html")) {

@@ -3,15 +3,22 @@ from flask_cors import CORS
 import json
 import os
 
+from openai import OpenAI
+
+# ===============================
+# INIT
+# ===============================
 app = Flask(__name__)
 CORS(app)
+
+client = OpenAI(api_key="YOUR_OPENAI_API_KEY")
 
 USERS_FILE = "users.json"
 DATA_FILE = "data.json"
 
 
 # ===============================
-# INIT FILES
+# FILE SETUP
 # ===============================
 def init_file(file):
     if not os.path.exists(file):
@@ -22,12 +29,10 @@ init_file(USERS_FILE)
 init_file(DATA_FILE)
 
 
-# ===============================
-# LOAD & SAVE
-# ===============================
 def load(file):
     with open(file, "r") as f:
         return json.load(f)
+
 
 def save(file, data):
     with open(file, "w") as f:
@@ -35,7 +40,7 @@ def save(file, data):
 
 
 # ===============================
-# SIGNUP
+# AUTH
 # ===============================
 @app.route("/signup", methods=["POST"])
 def signup():
@@ -46,20 +51,12 @@ def signup():
         if user["email"] == data["email"]:
             return jsonify({"message": "User already exists"}), 400
 
-    users.append({
-        "name": data["name"],
-        "email": data["email"],
-        "password": data["password"]
-    })
-
+    users.append(data)
     save(USERS_FILE, users)
 
-    return jsonify({"message": "Signup successful"}), 200
+    return jsonify({"message": "Signup successful"})
 
 
-# ===============================
-# LOGIN
-# ===============================
 @app.route("/login", methods=["POST"])
 def login():
     data = request.json
@@ -67,66 +64,129 @@ def login():
 
     for user in users:
         if user["email"] == data["email"] and user["password"] == data["password"]:
-            return jsonify({
-                "message": "Login successful",
-                "user": user
-            }), 200
+            return jsonify({"message": "Login successful"}), 200
 
     return jsonify({"message": "Invalid credentials"}), 401
 
 
 # ===============================
-# SAVE PERSONAL INFO
+# SAVE PERSONAL DATA
 # ===============================
 @app.route("/save-personal", methods=["POST"])
 def save_personal():
     data = request.json
     db = load(DATA_FILE)
 
-    db.append({
-        "email": data["email"],
-        "age": data["age"],
-        "height": data["height"],
-        "weight": data["weight"]
-    })
-
+    db.append(data)
     save(DATA_FILE, db)
 
-    return jsonify({"message": "Personal data saved"}), 200
+    return jsonify({"message": "Saved"})
 
 
 # ===============================
-# SAVE DIAGNOSIS
+# AI ANALYSIS
 # ===============================
-@app.route("/save-diagnosis", methods=["POST"])
-def save_diagnosis():
+@app.route("/analyze", methods=["POST"])
+def analyze():
+
     data = request.json
-    db = load(DATA_FILE)
+    answers = data.get("answers", [])
 
-    db.append({
-        "email": data["email"],
-        "diagnosis": data["diagnosis"]
-    })
+    # Convert answers → readable
+    user_data = ""
+    for a in answers:
+        if a["answer"] == "Yes":
+            user_data += f"{a['question']} for {a.get('duration', '')}, "
 
-    save(DATA_FILE, db)
+    # ===============================
+    # TRY OPENAI AI
+    # ===============================
+    try:
+        prompt = f"""
+        Symptoms: {user_data}
 
-    return jsonify({"message": "Diagnosis saved"}), 200
+        Respond in this format:
+
+        Condition:
+        Risk:
+        Explanation:
+        Next Steps:
+        """
+
+        response = client.chat.completions.create(
+            model="gpt-4.1-mini",
+            messages=[
+                {"role": "system", "content": "You are a medical assistant AI."},
+                {"role": "user", "content": prompt}
+            ]
+        )
+
+        ai_text = response.choices[0].message.content
+
+        return jsonify({
+            "source": "AI",
+            "result": ai_text
+        })
+
+    # ===============================
+    # FALLBACK (SMART AI-LIKE)
+    # ===============================
+    except Exception as e:
+        print("AI failed:", e)
+
+        score = 0
+
+        condition_scores = {
+            "PCOS": 0,
+            "Thyroid Disorder": 0,
+            "Endometriosis": 0
+        }
+
+        for a in answers:
+            if a["answer"] == "Yes":
+
+                if a.get("duration") in ["6+ months", "Months"]:
+                    score += 3
+                else:
+                    score += 2
+
+                q = a["question"].lower()
+
+                if "period" in q or "acne" in q:
+                    condition_scores["PCOS"] += 2
+
+                if "fatigue" in q or "weight" in q:
+                    condition_scores["Thyroid Disorder"] += 2
+
+                if "pain" in q or "bleeding" in q:
+                    condition_scores["Endometriosis"] += 2
+
+        percent = min(score * 10, 100)
+        predicted = max(condition_scores, key=condition_scores.get)
+
+        fallback_text = f"""
+        Condition: {predicted}
+
+        Risk Level: {percent}%
+
+        Explanation:
+        Based on your symptoms, there is a likelihood of {predicted}. 
+        Duration and pattern of symptoms suggest moderate concern.
+
+        Next Steps:
+        • Consult a specialist
+        • Maintain healthy lifestyle
+        • Track symptoms regularly
+        """
+
+        return jsonify({
+            "source": "fallback",
+            "result": fallback_text
+        })
 
 
 # ===============================
-# GET USER DATA
-# ===============================
-@app.route("/get-user-data/<email>", methods=["GET"])
-def get_user_data(email):
-    db = load(DATA_FILE)
-
-    user_data = [item for item in db if item.get("email") == email]
-
-    return jsonify(user_data), 200
-
-
-# ===============================
-# RUN SERVER
+# RUN
 # ===============================
 if __name__ == "__main__":
     app.run(debug=True)
