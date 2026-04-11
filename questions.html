@@ -1,55 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Assessment Step 1</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthera - Assessment</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body style="background: #F8F7FF;">
 
-<body>
+    <div class="navbar" style="background: white; border-bottom: 1px solid #eaeaea;">
+        <h2 class="logo" style="color: #6D597A;">Synthera</h2>
+        <button class="logout" style="color: #6D597A; border: 1px solid #6D597A; background: white; border-radius: 20px; padding: 5px 15px; cursor: pointer;">Logout</button>
+    </div>
 
-<!-- NAVBAR -->
-<div class="navbar">
-  <h2 class="logo">Florya</h2>
-  <button class="logout">Log out</button>
-</div>
+    <div class="dashboard-container" style="align-items: flex-start; padding-top: 40px; min-height: 100vh;">
+        
+        <div id="purposeStep" style="width: 100%; max-width: 750px; margin: 0 auto; display: block;">
+            
+            <div style="margin-bottom: 35px;">
+                <div style="font-size: 13px; color: #6D597A; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">ASSESSMENT START</div>
+                <h2 style="font-size: 26px; color: #222; margin-bottom: 8px;">What is your primary goal today?</h2>
+                <p style="color: #666; font-size: 16px;">Help us tailor your screening path.</p>
+            </div>
 
-<!-- PROGRESS -->
-<div class="progress-container">
-  <p id="stepText">STEP 1</p>
-  <p id="percentText">0% Complete</p>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div class="syn-q-card purpose-card" id="btnPurposeSymptoms" style="margin-bottom: 0;">
+                    <h3 style="color: #1e293b; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 24px;">🩺</span> I am experiencing symptoms
+                    </h3>
+                    <p style="color: #64748b; font-size: 15px;">I want to check specific issues like irregular cycles, fatigue, weight changes, or pain.</p>
+                </div>
 
-  <div class="progress-bar">
-    <div class="progress-fill" id="progressFill"></div>
-  </div>
-</div>
+                <div class="syn-q-card purpose-card" id="btnPurposeGeneral" style="margin-bottom: 0;">
+                    <h3 style="color: #1e293b; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 24px;">📋</span> Routine General Checkup
+                    </h3>
+                    <p style="color: #64748b; font-size: 15px;">I feel mostly fine but want to screen for baseline women's health and metabolic markers.</p>
+                </div>
+            </div>
 
-<!-- QUESTION CARD -->
-<div id="symptomStep">
-  <h2>Previous Diagnoses</h2>
+        </div>
 
-  <div class="options">
-    <div class="option">PCOS</div>
-    <div class="option">Endometriosis</div>
-    <div class="option">Thyroid disorder</div>
-    <div class="option">None</div>
-  </div>
+        <div id="symptomStep" style="width: 100%; max-width: 750px; margin: 0 auto; display: none;">
+            
+            <div style="margin-bottom: 35px;">
+                <div style="font-size: 13px; color: #6D597A; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">STEP 1 OF 3</div>
+                <h2 style="font-size: 26px; color: #222; margin-bottom: 8px;">What brings you here today?</h2>
+                <p style="color: #666; font-size: 16px;">Search and select the main symptoms you've noticed recently.</p>
+            </div>
 
-  <button id="nextQ">Next</button>
-</div>
+            <div class="syn-q-card">
+                <label style="display: block; font-size: 16px; font-weight: 600; color: #333; margin-bottom: 12px;">Search Symptoms</label>
+                <div class="search-container">
+                    <input type="text" id="symptomInput" placeholder="e.g., Irregular cycles, fatigue..." autocomplete="off">
+                    <div id="suggestionsBox" class="suggestions-box"></div>
+                </div>
+                
+                <div id="selectedTags" class="selected-tags" style="margin-top: 15px; margin-bottom: 30px;"></div>
 
+                <hr style="border: 0; border-top: 1px solid #eaeaea; margin: 30px 0;">
 
-<!-- STEP 2: QUESTIONS -->
-<div id="questionStep" style="display:none;">
-  <div id="dynamicQuestions"></div>
+                <label for="initialDuration" style="display: block; font-size: 16px; font-weight: 600; color: #333; margin-bottom: 12px;">How long have you noticed this?</label>
+                <select id="initialDuration" class="custom-select">
+                    <option value="" disabled selected>Select duration...</option>
+                    <option value="days">A few days</option>
+                    <option value="weeks">A few weeks</option>
+                    <option value="months">1 - 3 months</option>
+                    <option value="chronic">More than 3 months</option>
+                </select>
+            </div>
 
-  <div class="bottom-bar">
-    <button id="backBtn">← Back</button>
-    <button id="nextBtnQ">Next →</button>
-  </div>
-</div>
+            <div style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <button id="nextQ" class="syn-nav-btn">Continue to Assessment →</button>
+            </div>
 
-<script src="script.js"></script>
+        </div>
 
+        <div id="questionStep" style="display: none; width: 100%; max-width: 750px; margin: 0 auto;">
+            
+            <div style="margin-bottom: 40px;">
+                <div style="display: flex; justify-content: space-between; font-size: 13px; color: #6D597A; margin-bottom: 8px; font-weight: 600;">
+                    <span id="stepText">STEP 2 OF 3</span>
+                    <span id="percentText">0% Complete</span>
+                </div>
+                <div style="width: 100%; height: 6px; background: #e0dce8; border-radius: 4px;">
+                    <div id="progressFill" style="width: 0%; height: 100%; background: #B56576; border-radius: 4px; transition: 0.4s ease;"></div>
+                </div>
+            </div>
+
+            <h2 id="sectionTitle" style="font-size: 22px; color: #222; margin-bottom: 25px;">Assessment</h2>
+
+            <div id="dynamicQuestions"></div>
+
+            <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+                <button id="backBtn" class="syn-nav-btn" style="background: white; color: #6D597A; border: 1px solid #6D597A; box-shadow: none;">← Back</button>
+            </div>
+            
+        </div>
+
+        <div id="labStep" style="display: none; width: 100%; max-width: 750px; margin: 0 auto;">
+            
+            <div style="margin-bottom: 35px;">
+                <div style="font-size: 13px; color: #6D597A; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px;">FINAL STEP</div>
+                <h2 style="font-size: 26px; color: #222; margin-bottom: 8px;">Clinical Lab Reports</h2>
+                <p style="color: #666; font-size: 16px;">Do you have recent blood work or lab reports (like Thyroid, Iron, or Hormones)?</p>
+            </div>
+
+            <div class="syn-q-card">
+                
+                <div class="syn-options-grid" style="margin-bottom: 25px;">
+                    <div class="syn-opt-btn" id="btnLabYes">
+                        <div class="syn-radio-circle"></div>
+                        <span style="font-weight: 600; color: #334155;">Yes, I have reports</span>
+                    </div>
+                    <div class="syn-opt-btn" id="btnLabNo">
+                        <div class="syn-radio-circle"></div>
+                        <span style="font-weight: 600; color: #334155;">No, suggest tests for me</span>
+                    </div>
+                </div>
+
+                <div id="uploadArea" style="display: none; border: 2px dashed #cbd5e1; border-radius: 12px; padding: 40px; text-align: center; background: #f8fafc;">
+                    <span style="font-size: 30px; margin-bottom: 10px; display: block;">📄</span>
+                    <p style="color: #64748b; margin-bottom: 15px; font-size: 15px;">Upload your PDF or Image reports here</p>
+                    <input type="file" id="labFile" accept=".pdf, image/*" style="display: none;">
+                    <label for="labFile" class="syn-small-btn" style="padding: 10px 20px; font-size: 14px; display: inline-block;">Browse Files</label>
+                    <p id="fileNameDisplay" style="margin-top: 12px; font-size: 14px; color: #B56576; font-weight: 600;"></p>
+                </div>
+
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 30px;">
+                <button id="finishAssessmentBtn" class="syn-nav-btn">Generate Analysis →</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,69 +1,101 @@
+/* ================= GLOBAL RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ================= GLOBAL STYLES ================= */
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f8cdda, #1d2b64);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #F8F7FF; /* Very faint lavender-grey */
+    color: #333;
+    min-height: 100vh;
+    padding-top: 80px; /* Space for navbar */
 }
 
-/* Container */
+/* ================= NAVBAR ================= */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #FFFFFF; /* Surface Card color */
+    border-bottom: 1px solid #eaeaea;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #6D597A; /* Muted Plum */
+}
+
+.logout {
+    background: #FFFFFF;
+    border: 1px solid #6D597A;
+    border-radius: 20px;
+    padding: 6px 16px;
+    color: #6D597A;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout:hover {
+    background: #6D597A;
+    color: #FFFFFF;
+}
+
+/* ================= LANDING PAGE ================= */
 .landing {
     text-align: center;
-    color: white;
+    color: #333;
+    padding-top: 50px;
 }
 
-/* Logo */
-.logo {
-    width: 100px;
-    margin-bottom: 20px;
-}
-
-/* App Name */
 h1 {
     font-size: 42px;
     margin-bottom: 30px;
+    color: #6D597A; /* Muted Plum */
 }
 
-/* Button */
 #startBtn {
     padding: 14px 35px;
     font-size: 18px;
-    background: #ff4d8d;
+    background: #6D597A; /* Muted Plum */
     border: none;
     border-radius: 30px;
     color: white;
     cursor: pointer;
     transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(109, 89, 122, 0.25);
 }
 
 #startBtn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(109, 89, 122, 0.4);
 }
 
-/* AUTH PAGE */
-
+/* ================= AUTH PAGE (LOGIN/SIGNUP) ================= */
 .auth-container {
-    background: white;
+    background: #FFFFFF;
     padding: 35px;
     width: 320px;
     margin: auto;
-    margin-top: 120px;
+    margin-top: 60px;
     border-radius: 15px;
     text-align: center;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.05);
 }
 
 .auth-container h2 {
     margin-bottom: 20px;
-    color: #333;
+    color: #6D597A; /* Muted Plum */
 }
 
 .auth-container input {
@@ -73,14 +105,20 @@ h1 {
     border-radius: 8px;
     border: 1px solid #ccc;
     font-size: 14px;
+    transition: 0.2s;
 }
 
-/* Button */
+.auth-container input:focus {
+    border-color: #B56576; /* Warm Rose */
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(181, 101, 118, 0.2);
+}
+
 #authBtn {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
-    background: #ff4d8d;
+    background: #6D597A; /* Muted Plum */
     border: none;
     border-radius: 8px;
     color: white;
@@ -90,151 +128,352 @@ h1 {
 }
 
 #authBtn:hover {
-    transform: scale(1.05);
+    background: #5a4966;
+    transform: scale(1.02);
 }
 
-/* Toggle */
 #toggleText {
     margin-top: 15px;
     font-size: 14px;
+    color: #666;
 }
 
 #toggleBtn {
-    color: #ff4d8d;
+    color: #B56576; /* Warm Rose */
     cursor: pointer;
     font-weight: 600;
 }
 
+/* ================= DASHBOARD (PERSONAL INFO CARD) ================= */
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
 
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
+.personal-info-card, .main-card {
+    background: #FFFFFF;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin: 20px auto;
     box-sizing: border-box;
 }
 
-/* BODY */
-body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f8cdda, #1d2b64);
-    min-height: 100vh;
-    padding-top: 80px; /* navbar space */
-}
-
-
-/* ================= NAVBAR ================= */
-.navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-
+.personal-info-card h2, .main-card h2 {
+    margin-top: 0;
+    color: #1e293b;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-    padding: 15px 40px;
-    background: #1d2b64;
-    color: white;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.logout {
-    background: none;
-    border: none;
-    color: #ffb3c6;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-
-/* ================= MAIN CARD ================= */
-.main-card {
-    background: white;
-    width: 400px;
-    margin: 60px auto;
-    padding: 30px;
-    border-radius: 15px;
-
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
-}
-
-.main-card h2 {
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 20px;
-}
-
-
-/* ================= INPUTS ================= */
-.main-card label {
-    display: block;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.main-card input {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 15px 0;
-
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-}
-
-
-/* ================= ROW (HEIGHT + WEIGHT) ================= */
-.row {
-    display: flex;
     gap: 10px;
 }
 
-.input-box {
-    flex: 1;
+.subtitle {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 25px;
 }
 
-
-/* ================= INFO BOX ================= */
-.info-box {
-    background: #f3f0ff;
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 13px;
-    color: #444;
-    margin-top: 10px;
+.form-group {
+    margin-bottom: 20px;
 }
 
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
 
-/* ================= BUTTON ================= */
-.bottom-bar {
+.form-group input, .main-card input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus, .main-card input:focus {
+    outline: none;
+    border-color: #B56576; /* Warm Rose */
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(181, 101, 118, 0.1);
+}
+
+.form-row, .row {
     display: flex;
-    justify-content: center;
+    gap: 15px;
 }
 
+.form-row .form-group, .input-box {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.info-box {
+    background: #F8F7FF;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #555;
+    margin: 20px 0;
+    border-left: 4px solid #B56576; /* Warm Rose accent */
+}
+
+/* Legacy Next Button (Fallback) */
 .next-btn {
-    padding: 12px 35px;
-    background: #ff4d8d;
+    padding: 12px 40px;
+    background: #6D597A;
     color: white;
-
     border: none;
-    border-radius: 25px;
+    border-radius: 30px;
     font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.next-btn:hover { background: #5a4966; transform: translateY(-2px); }
 
+
+/* ================= SYMPTOM SEARCH & TAGS (QUESTIONS PAGE) ================= */
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+#symptomInput, .custom-select {
+    width: 100%;
+    padding: 16px;
+    font-size: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #FFFFFF;
+    color: #333;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+#symptomInput:focus, .custom-select:focus {
+    border-color: #B56576; /* Warm Rose */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(181, 101, 118, 0.15);
+}
+
+.suggestions-box {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    margin-top: 5px;
+    display: none;
+}
+
+.suggestion-item {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #444;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+}
+
+.suggestion-item:last-child { border-bottom: none; }
+
+.suggestion-item:hover {
+    background: #F8F7FF;
+    color: #B56576; /* Warm Rose */
+}
+
+.selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.symptom-tag {
+    background: #B56576; /* Warm Rose */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(181, 101, 118, 0.25);
+    animation: fadeIn 0.3s ease;
+}
+
+.symptom-tag span {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= SYNTHERA CLINICAL LAYOUT ================= */
+.syn-q-card {
+    background: #FFFFFF;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.syn-q-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.syn-info-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.syn-small-btn {
+    background: #F8F7FF;
+    color: #6D597A; /* Muted Plum */
+    border: 1px solid #dcd8e8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.syn-small-btn:hover {
+    background: #6D597A; /* Muted Plum */
+    color: #FFFFFF;
+}
+
+.syn-options-grid {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.syn-opt-btn {
+    flex: 1;
+    padding: 15px;
+    background: #FFFFFF;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.syn-opt-btn:hover {
+    border-color: #B56576; /* Warm Rose */
+    background: #fdfafb;
+}
+
+.syn-radio-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e1;
+    background: white;
+    transition: 0.2s;
+}
+
+.syn-nav-btn {
+    padding: 12px 40px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
+    background: #6D597A; /* Muted Plum */
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(109, 89, 122, 0.25);
 }
 
-.next-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.syn-nav-btn:hover {
+    background: #5a4966;
+    transform: translateY(-2px);
+}
+
+/* ================= POPUP MODAL ================= */
+.modal-overlay {
+    position: fixed !important;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6) !important;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 9999 !important;
+}
+
+.modal-content {
+    background: #FFFFFF;
+    padding: 40px;
+    border-radius: 12px;
+    width: 80% !important; 
+    max-width: 800px !important; 
+    text-align: left;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px; right: 25px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+}
+
+.modal-title {
+    color: #6D597A; /* Muted Plum */
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.modal-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+}
+/* Interactive Cards for the new Starting Step */
+.purpose-card {
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.purpose-card:hover {
+    border-color: #B56576;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(181, 101, 118, 0.15);
 }
