@@ -24,7 +24,6 @@
         "weight": "70"
     },
     {
-<<<<<<< HEAD
         "email": "vishal@gmail.com",
         "age": "21",
         "height": "171",
@@ -71,7 +70,8 @@
         "age": "20",
         "height": "168",
         "weight": "55"
-=======
+    },
+    {
         "email": "praks@gmail.com",
         "age": "48",
         "height": "162",
@@ -154,6 +154,5 @@
         "age": "90",
         "height": "190",
         "weight": "90"
->>>>>>> f295dce12cad74a39278b615e65e57f4391d9a8d
     }
 ]
