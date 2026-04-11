@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Assessment</title>
+  <title>Synthera - Personal Info</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,43 +10,53 @@
 
 <!-- NAVBAR -->
 <div class="navbar">
-  <h2 class="logo">Florya</h2>
-  <button class="logout">Log out</button>
+  <h2 class="logo">Synthera</h2>
+  <button class="logout">Logout</button>
 </div>
 
 <!-- MAIN CARD -->
 <div class="main-card">
 
   <h2>👤 Personal Information</h2>
+  <p class="subtitle">Enter your basic details to begin assessment</p>
 
   <!-- AGE -->
-  <label>Age (Years)</label>
-  <input type="number" placeholder="e.g. 28" id="age">
+  <label>Age</label>
+  <input type="number" placeholder="Enter your age" id="age">
 
-  <!-- HEIGHT -->
+  <!-- HEIGHT + WEIGHT -->
+  <div class="main-card">
+
+  <h2>👤 Personal Information</h2>
+  <p class="subtitle">Enter your basic details to begin assessment</p>
+
+  <label>Age</label>
+  <input type="number" id="age" placeholder="Enter your age">
+
   <div class="row">
-    <div>
+    <div class="input-box">
       <label>Height (cm)</label>
-      <input type="number" placeholder="e.g. 165" id="height">
+      <input type="number" id="height" placeholder="e.g. 165">
     </div>
 
-    <div>
+    <div class="input-box">
       <label>Weight (kg)</label>
-      <input type="number" placeholder="e.g. 62" id="weight">
+      <input type="number" id="weight" placeholder="e.g. 60">
     </div>
   </div>
 
-  <!-- INFO BOX -->
   <div class="info-box">
-    Height and Weight are used to calculate BMI, which acts as a risk modifier.
+    These values help us estimate BMI and improve screening accuracy.
   </div>
+
+  <!-- ✅ BUTTON NOW INSIDE CARD -->
+  <button class="next-btn" id="nextBtn">Continue →</button>
 
 </div>
 
-<!-- BUTTONS -->
+<!-- BUTTON -->
 <div class="bottom-bar">
-  <button class="back-btn">← Back</button>
-  <button class="next-btn" id="nextBtn">Next Step →</button>
+  <button class="next-btn" id="nextBtn">Continue →</button>
 </div>
 
 <script src="script.js"></script>
