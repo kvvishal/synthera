@@ -62,17 +62,32 @@ def signup():
 # ===============================
 @app.route("/login", methods=["POST"])
 def login():
-    data = request.json
-    users = load(USERS_FILE)
+    try:
+        data = request.get_json()
 
-    for user in users:
-        if user["email"] == data["email"] and user["password"] == data["password"]:
-            return jsonify({
-                "message": "Login successful",
-                "user": user
-            }), 200
+        if not data:
+            return jsonify({"message": "No data received"}), 400
 
-    return jsonify({"message": "Invalid credentials"}), 401
+        email = data.get("email")
+        password = data.get("password")
+
+        if not email or not password:
+            return jsonify({"message": "Missing email or password"}), 400
+
+        users = load(USERS_FILE)
+
+        for user in users:
+            if user["email"] == email and user["password"] == password:
+                return jsonify({
+                    "message": "Login successful",
+                    "user": user
+                }), 200
+
+        return jsonify({"message": "Invalid credentials"}), 401
+
+    except Exception as e:
+        print("ERROR:", e)
+        return jsonify({"message": "Internal server error"}), 500
 
 
 # ===============================
