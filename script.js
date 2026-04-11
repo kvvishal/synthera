@@ -607,48 +607,18 @@ function calculateRisk() {
     return Math.round((score / maxScore) * 100);
 }
 
-<<<<<<< HEAD
-
-// ===============================
-// SHOW RESULT (AI CONNECTED)
-// ===============================
-async function showResult() {
-
-    const answers = JSON.parse(localStorage.getItem("answers")) || [];
-
-    const res = await fetch("http://127.0.0.1:5000/analyze", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ answers })
-    });
-
-    const data = await res.json();
-
-    const output = document.getElementById("insights");
-=======
 function showResult() {
     let percent = calculateRisk();
     const riskText = document.getElementById("riskText");
->>>>>>> f295dce12cad74a39278b615e65e57f4391d9a8d
     const riskPercent = document.getElementById("riskPercent");
+    const insights = document.getElementById("insights");
     const circle = document.querySelector(".circle");
 
-    let text = data.result;
+    if (!riskPercent) return;
 
-    // 🔥 EXTRACT PERCENT FROM TEXT
-    let match = text.match(/(\d+)%/);
-
-    let percent = match ? parseInt(match[1]) : 50; // default fallback
-
-    // 🔥 ANIMATE CIRCLE
     let current = 0;
 
-<<<<<<< HEAD
-=======
     // 🔥 ANIMATION (Updated to match Warm Rose / Muted Plum Theme)
->>>>>>> f295dce12cad74a39278b615e65e57f4391d9a8d
     let interval = setInterval(() => {
         if (current >= percent) {
             clearInterval(interval);
@@ -659,21 +629,6 @@ function showResult() {
         }
     }, 15);
 
-<<<<<<< HEAD
-    // 🔥 DISPLAY RESULT TEXT
-    output.innerHTML = `
-        <h3>${data.source === "AI" ? "AI Analysis 🤖" : "Smart Analysis ⚡"}</h3>
-        <pre style="white-space:pre-line;">${text}</pre>
-    `;
-}
-
-
-// ===============================
-// AUTO RUN ON RESULT PAGE
-// ===============================
-if (window.location.pathname.includes("result.html")) {
-    showResult();
-=======
     if (percent > 70) {
         riskText.innerText = "High Risk ⚠️";
     } else if (percent > 40) {
@@ -690,7 +645,6 @@ if (window.location.pathname.includes("result.html")) {
             insights.innerHTML += `<p style='margin-bottom: 5px;'>• ${a.question} <strong style='color: #B56576;'>(${a.duration})</strong></p>`;
         }
     });
->>>>>>> f295dce12cad74a39278b615e65e57f4391d9a8d
 }
 
 if (window.location.pathname.includes("result.html")) {
