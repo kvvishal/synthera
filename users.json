@@ -5,8 +5,14 @@
         "password": "123456789"
     },
     {
+<<<<<<< HEAD
         "name": "bhumi",
         "email": "bhumi@gmail.com",
         "password": "123456789"
+=======
+        "name": "fahh",
+        "email": "praks@gmail.com",
+        "password": "praks"
+>>>>>>> f295dce12cad74a39278b615e65e57f4391d9a8d
     }
 ]
