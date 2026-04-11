@@ -58,5 +58,17 @@
         "age": "21",
         "height": "171",
         "weight": "70"
+    },
+    {
+        "email": "vishal@gmail.com",
+        "age": "21",
+        "height": "171",
+        "weight": "70"
+    },
+    {
+        "email": "bhumi@gmail.com",
+        "age": "20",
+        "height": "168",
+        "weight": "55"
     }
 ]
