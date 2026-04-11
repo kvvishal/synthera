@@ -24,6 +24,7 @@
         "weight": "70"
     },
     {
+<<<<<<< HEAD
         "email": "vishal@gmail.com",
         "age": "21",
         "height": "171",
@@ -70,5 +71,89 @@
         "age": "20",
         "height": "168",
         "weight": "55"
+=======
+        "email": "praks@gmail.com",
+        "age": "48",
+        "height": "162",
+        "weight": "61"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "48",
+        "height": "162",
+        "weight": "61"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "52",
+        "height": "163",
+        "weight": "61"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "48",
+        "height": "161",
+        "weight": "62"
+    },
+    {
+        "email": null,
+        "age": "43",
+        "height": "161",
+        "weight": "56"
+    },
+    {
+        "email": null,
+        "age": "48",
+        "height": "161",
+        "weight": "59"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "65",
+        "height": "159",
+        "weight": "55"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "90",
+        "height": "90",
+        "weight": "90"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "23",
+        "height": "145",
+        "weight": "34"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "45",
+        "height": "145",
+        "weight": "45"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "56",
+        "height": "156",
+        "weight": "56"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "67",
+        "height": "167",
+        "weight": "67"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "56",
+        "height": "156",
+        "weight": "56"
+    },
+    {
+        "email": "praks@gmail.com",
+        "age": "90",
+        "height": "190",
+        "weight": "90"
+>>>>>>> f295dce12cad74a39278b615e65e57f4391d9a8d
     }
 ]
