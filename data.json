@@ -154,5 +154,11 @@
         "age": "90",
         "height": "190",
         "weight": "90"
+    },
+    {
+        "email": "vishal@gmail.com",
+        "age": "22",
+        "height": "555",
+        "weight": "66"
     }
 ]
